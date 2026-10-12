@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["PA4VL62L36.com.coddeitcorp.DoCall"],
+        "components": [
+          { "/": "/i/*", "comment": "Doctor invite links (QR codes)" }
+        ]
+      }
+    ]
+  }
+}

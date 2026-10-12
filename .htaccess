@@ -1,0 +1,24 @@
+# ── DoCall doctor invite links ──────────────────────────────────────────────
+# If this site already has an .htaccess, MERGE these rules into it (keep them
+# above any catch-all rewrite) instead of replacing the file.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Invite links from doctors' QR codes: https://docall.coddeitcorp.com/i/<CODE>
+  # When DoCall is installed, Android/iOS open these links directly in the app
+  # (this rule is never reached). Otherwise the DoCall API instantly redirects
+  # to the Play Store / App Store — no page is shown.
+  RewriteRule ^i/([A-Za-z0-9-]{1,32})/?$ https://doctok-api.onrender.com/i/$1 [R=302,L,NE]
+</IfModule>
+
+# App link verification files: must be served as JSON over HTTPS with NO redirect.
+<IfModule mod_headers.c>
+  <Files "apple-app-site-association">
+    ForceType application/json
+    Header set Content-Type "application/json"
+  </Files>
+  <Files "assetlinks.json">
+    Header set Content-Type "application/json"
+  </Files>
+</IfModule>
