@@ -94,3 +94,15 @@
   .faq-list details { padding: 0 18px; }
   .emergency { align-items: flex-start; }
 }
+
+/* Support page — grievance officer (Consumer Protection (E-Commerce) Rules / IT Rules display) */
+.grievance { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; margin-top: 18px; padding: 24px; border-radius: var(--radius); border: 1px solid var(--line); background: #fff; box-shadow: var(--shadow-sm); }
+.grievance h3 { font-size: 19px; font-weight: 800; letter-spacing: -.03em; margin: 0 0 8px; }
+.grievance p { font-size: 14px; line-height: 1.6; margin: 0; }
+.grievance dl { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; margin: 0; }
+.grievance dt { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--purple); margin-bottom: 3px; }
+.grievance dd { margin: 0; font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.5; }
+.grievance dd a { color: var(--purple); }
+.grievance dl > div:last-child { grid-column: 1 / -1; }
+@media (max-width: 960px) { .grievance { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .grievance dl { grid-template-columns: 1fr; } }
