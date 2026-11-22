@@ -2,7 +2,7 @@
 // the admin portal → Settings). The values written in the HTML are the fallback,
 // so the page still works if the API is unreachable.
 (() => {
-  const ENDPOINT = 'https://doctok-api.onrender.com/api/v1/system-config/support-contact'
+  const ENDPOINT = 'https://api.docall.coddeitcorp.com/api/v1/system-config/support-contact'
 
   const formatPhone = (e164) => {
     const m = /^\+91(\d{5})(\d{5})$/.exec(e164)

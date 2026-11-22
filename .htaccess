@@ -9,7 +9,8 @@
   # When DoCall is installed, Android/iOS open these links directly in the app
   # (this rule is never reached). Otherwise the DoCall API instantly redirects
   # to the Play Store / App Store — no page is shown.
-  RewriteRule ^i/([A-Za-z0-9-]{1,32})/?$ https://doctok-api.onrender.com/i/$1 [R=302,L,NE]
+  # Production API (dev-test is doctok-api.onrender.com)
+  RewriteRule ^i/([A-Za-z0-9-]{1,32})/?$ https://api.docall.coddeitcorp.com/i/$1 [R=302,L,NE]
 </IfModule>
 
 # App link verification files: must be served as JSON over HTTPS with NO redirect.
