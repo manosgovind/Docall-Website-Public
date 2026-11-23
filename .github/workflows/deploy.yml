@@ -1,0 +1,43 @@
+# Uploads the website to Hostinger → https://docall.coddeitcorp.com
+# Runs on every push to main, or by hand: GitHub → Actions → "Deploy website" → Run workflow.
+# Only changed files are uploaded. The admin portal in /admin/ is deployed from its own
+# repository and is never touched here.
+#
+# Repository secrets (Settings → Secrets and variables → Actions):
+#   FTP_SERVER     Hostinger FTP host, e.g. ftp.coddeitcorp.com or the IP shown in hPanel
+#   FTP_USERNAME   Hostinger FTP user
+#   FTP_PASSWORD   its password
+#   FTP_SITE_DIR   the docall subdomain's folder, ending in /
+#                  e.g. /domains/coddeitcorp.com/public_html/docall/
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-website
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_SITE_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            admin/**
+            README.md
