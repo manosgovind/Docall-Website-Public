@@ -1,0 +1,11 @@
+{
+  "name": "docall-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "node scripts/deploy-ftp.mjs --dir=. --exclude=.github,.gitignore,admin,scripts,package.json,package-lock.json,README.md"
+  },
+  "devDependencies": {
+    "basic-ftp": "^6.2.6"
+  }
+}
